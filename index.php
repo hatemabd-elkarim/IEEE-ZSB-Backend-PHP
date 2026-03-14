@@ -7,8 +7,10 @@ require 'Database.php';
 require 'router.php';
 
 // connect to mysql database
-$db = new Database();
+$config = require 'config.php';
 
-$posts = $db->query('select * from posts')->fetchAll(PDO::FETCH_ASSOC);
+$db = new Database($config['database']);
 
-dd($posts);
+$posts = $db->query('select * from posts')->fetchAll();
+
+// dd($posts);
