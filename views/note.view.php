@@ -8,7 +8,7 @@ require('partials/banner.php');
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
 
         <p>
-            <?= $note['body'] ?>
+            <?= htmlspecialchars($note['body']) ?>
         </p>
         <br>
         <a href='/notes' class="text-blue-500 hover:underline">
