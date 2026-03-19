@@ -9,15 +9,8 @@ $heading = 'Note';
 
 $NOTE_ID = $_GET['id'];
 
-$note = $db->query('select * from notes where id = ?', [$NOTE_ID])->fetch();
+$note = $db->query('select * from notes where id = ?', [$NOTE_ID])->findOrFail();
 
-
-if (!$note) { // if the given id does not match any notes
-    abort();
-}
-
-if ($note['user_id'] !== $USER_ID) {
-    abort(Response::FORBIDDEN);
-}
+authorize($note['user_id'] === $USER_ID);
 
 require 'views/note.view.php';
