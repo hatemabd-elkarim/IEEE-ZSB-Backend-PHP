@@ -1,5 +1,7 @@
 <?php
 
+use Core\Response;
+
 function routeToController($uri, $routes, $USER_ID = 1) {
     if(array_key_exists($uri, $routes))
         require base_path($routes[$uri]);
