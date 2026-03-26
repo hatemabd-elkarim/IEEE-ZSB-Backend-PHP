@@ -1,11 +1,9 @@
 <?php
 
+use Core\App;
 use Core\Database;
 
-// connect to mysql database
-$config = require base_path('config.php');
-
-$db = new Database($config['database']);
+$db = App::resolve(Database::class);
 
 $NOTE_ID = $_GET['id'];
 
