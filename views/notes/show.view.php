@@ -15,6 +15,11 @@ require base_path('views/partials/banner.php');
             go back
         </a>
 
+        <a href="/note/edit?id=<?= $note['id'] ?>" class="inline ml-6" method="POST">
+            <button class="text-sm text-indigo-700 hover:underline">Edit</button>
+        </a>
+
+        
         <form class="inline ml-6" method="POST">
             <input type="hidden" name="_method" value="DELETE">
             <input type="hidden" name="id" value="<?= $note['id'] ?>">
