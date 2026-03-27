@@ -47,4 +47,9 @@ class Database
         }
         return $result;
     }
+
+    public function lastInsertId()
+    {
+        return $this->connection->lastInsertId();
+    }
 }

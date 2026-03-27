@@ -6,6 +6,8 @@ use Core\Validator;
 
 $db = App::resolve(Database::class);
 
+$USER_ID = $_SESSION['user']['id'];
+
 $NOTE_ID = $_POST['id'];
 // find the corresponding note
 $note = $db->query('select * from notes where id = ?', [$NOTE_ID

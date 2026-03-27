@@ -5,6 +5,8 @@ use Core\Database;
 
 $db = App::resolve(Database::class);
 
+$USER_ID = $_SESSION['user']['id'];
+
 $note = $db->query('select * from notes where id = :id', [
     'id' => $_POST['id']
 ])->findOrFail();

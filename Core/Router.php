@@ -52,7 +52,7 @@ class Router
         return $this;
     }
 
-    public function route($uri, $method, $USER_ID=1)
+    public function route($uri, $method)
     {
         foreach ($this->routes as $route) {
             if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
