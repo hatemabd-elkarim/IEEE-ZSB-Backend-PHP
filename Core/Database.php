@@ -1,5 +1,9 @@
 <?php
 
+namespace Core;
+
+use PDO;
+
 class Database
 {
 
@@ -42,5 +46,10 @@ class Database
             abort();
         }
         return $result;
+    }
+
+    public function lastInsertId()
+    {
+        return $this->connection->lastInsertId();
     }
 }

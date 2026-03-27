@@ -1,12 +1,12 @@
 <?php
-require('partials/header.php');
-require('partials/nav.php');
-require('partials/banner.php');
+require base_path('views/partials/header.php');
+require base_path('views/partials/nav.php');
+require base_path('views/partials/banner.php');
 ?>
 
 <main>
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        <form method="POST">
+        <form method="POST" action="/notes">
 
             <div class="col-span-full">
                 <label for="body" class="block text-sm/6 font-medium text-gray-900">Body</label>
@@ -30,5 +30,5 @@ require('partials/banner.php');
 </main>
 
 <?php
-require('partials/footer.php');
+require base_path('views/partials/footer.php');
 ?>
