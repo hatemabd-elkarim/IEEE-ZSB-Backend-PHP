@@ -43,7 +43,7 @@ function view($path, $attributes = []) {
 }
 
 function redirect($path, $attributes = []) {
-    foreach ($attributes as $key => $value) {
+    foreach ($attributes as $key => $value) { // to allow passing $errors from redirecting
         $_SESSION[$key] = $value;
     }
 
