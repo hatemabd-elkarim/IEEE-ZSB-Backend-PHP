@@ -3,6 +3,7 @@
 use Core\App;
 use Core\Database;
 use Core\Authenticator;
+use Core\Session;
 use Http\Forms\LoginForm;
 
 $db = App::resolve(Database::class);
@@ -22,10 +23,16 @@ $user = $db->query('select * from users where email = :email', [
 ])->find();
 
 if ($user) {
+    Session::flash('errors', [
+        'email' => 'An account with that email address already exists.'
+    ]);
+
+    Session::flash('old', [
+        'email' => $email
+    ]);
+
     redirect(
-        '/login',
-        ['errors' => ['email' => 'An account with provided email address already exists.']] // to allow passing $errors from redirecting
-    );
+        '/login');
 } else {
     $db->query('INSERT INTO users(email, password) VALUES(:email, :password)', [
         'email' => $email,

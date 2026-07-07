@@ -1,6 +1,4 @@
 <?php
+use Core\Session;
 
-$errors = $_SESSION['errors'] ?? [];
-unset($_SESSION['errors']); // to allow passing $errors from redirecting
-
-view('session/create.view.php', ['errors' => $errors]);
+view('session/create.view.php', ['errors' => Session::get('errors')]);
