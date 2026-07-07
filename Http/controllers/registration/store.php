@@ -2,7 +2,7 @@
 
 use Core\App;
 use Core\Database;
-use Core\Validator;
+use Core\Authenticator;
 use Http\Forms\LoginForm;
 
 $db = App::resolve(Database::class);
@@ -22,19 +22,20 @@ $user = $db->query('select * from users where email = :email', [
 ])->find();
 
 if ($user) {
-    header('location: /');
-    exit();
+    redirect(
+        '/login',
+        ['errors' => ['email' => 'An account with provided email address already exists.']]
+    );
 } else {
     $db->query('INSERT INTO users(email, password) VALUES(:email, :password)', [
         'email' => $email,
         'password' => password_hash($password, PASSWORD_BCRYPT)
     ]);
 
-    login([
+    (new Authenticator())->login([
         "email" => $email,
         "id" => $db->lastInsertId()
     ]);
 
-    header('location: /');
-    exit();
+    redirect('/');
 }
