@@ -1,0 +1,20 @@
+{
+    "name": "hatem/ieee-zsb-backend-php",
+    "require": {
+        "illuminate/collections": "^13.19"
+    },
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core",
+            "Http\\": "Http"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "require-dev": {
+        "pestphp/pest": "^4.7"
+    }
+}
