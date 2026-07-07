@@ -24,7 +24,7 @@ $user = $db->query('select * from users where email = :email', [
 if ($user) {
     redirect(
         '/login',
-        ['errors' => ['email' => 'An account with provided email address already exists.']]
+        ['errors' => ['email' => 'An account with provided email address already exists.']] // to allow passing $errors from redirecting
     );
 } else {
     $db->query('INSERT INTO users(email, password) VALUES(:email, :password)', [
