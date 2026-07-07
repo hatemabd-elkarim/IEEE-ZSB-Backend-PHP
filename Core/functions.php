@@ -1,6 +1,7 @@
 <?php
 
 use Core\Response;
+use Core\Session;
 
 function dd($value)
 {
@@ -32,21 +33,25 @@ function abort($code = 404)
     die();
 }
 
-function base_path($path) {
+function base_path($path)
+{
     return BASE_PATH . $path;
 }
 
-function view($path, $attributes = []) {
+function view($path, $attributes = [])
+{
     extract($attributes);
 
     require base_path('views/' . $path);
 }
 
-function redirect($path, $attributes = []) {
-    foreach ($attributes as $key => $value) { // to allow passing $errors from redirecting
-        $_SESSION[$key] = $value;
-    }
-
+function redirect($path)
+{
     header('location: ' . $path);
     exit();
+}
+
+function old($key, $default = '')
+{
+    return Session::get('old')[$key] ?? $default;
 }
